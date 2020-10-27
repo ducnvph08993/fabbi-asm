@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button, message } from "antd";
 import './ThirdStep.scss';
 import OrderDetail from '../OrderDetail';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const s4 = () => {
   return Math.floor((1+ Math.random()) * 0x10000).toString(16).substring(1);
@@ -98,10 +99,14 @@ const ThirdStep = (props) => {
     <Form
       form={form}
       layout="vertical"
-      onFinish={onFinish}
     >
     <div className="main-order">
       {showOrder()}
+      {
+      (isAdd) && add()
+      }
+      <br/>   
+      <PlusCircleOutlined onClick={handleAddClick} />
     </div>
     <div 
       className="steps-action"
@@ -114,18 +119,14 @@ const ThirdStep = (props) => {
         </Button>
         )}
         {currentSteps < steps.length - 1 && (
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={onFinish}>
             Next
           </Button>
         )}
       </div>
     </div>
     </Form>
-    {
-      (isAdd) && add()
-    }
-    <br/>   
-    <button onClick={handleAddClick}>Add</button>
+   
   </>
   )
 }
