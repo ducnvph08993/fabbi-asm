@@ -37,7 +37,7 @@ const FirstStep = (props) => {
         label="Number of peoples" 
         initialValue={newObject.peoples}
         rules={[{required:true, type: 'number', min: 1, max: 10 }]} >
-          <InputNumber />
+          <InputNumber type="number" />
         </Form.Item>
         <Form.Item name="meal" label="Meals" rules={[{ required: true }]}   initialValue={newObject.meal}>
           <Select
